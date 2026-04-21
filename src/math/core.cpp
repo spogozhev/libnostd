@@ -1,3 +1,11 @@
+/**
+ * @file
+ * @brief Core utils for mathematics
+ * @version 0.1.0
+ * @date 2026-04-21
+ * @authors svpogozhev
+ * @copyright MIT License
+ */
 #include <cmath>
 
 namespace math {
