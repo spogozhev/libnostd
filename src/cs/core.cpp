@@ -6,32 +6,47 @@
  * @copyright MIT License
  */
 #include <string>
+#include <algorithm>
 
 namespace cs {
 
-	/**
-	 * @todo Не эффективная реализация.
-	 *       Заменить на строка+символ и reverse
-	 */
 	std::string dec2hex(unsigned int decimal) {
 		std::string hexademal;
+		hexademal.reserve(20);
 		const char hex_digits[] = "0123456789ABCDEF";
 		do {
-			hexademal = hex_digits[decimal%16] + hexademal;
+			// hexademal = hex_digits[decimal%16] + hexademal;
+			hexademal += hex_digits[decimal%16];
 			decimal /= 16;
 		} while(decimal > 0);
+
+		std::reverse(hexademal.begin(), hexademal.end());
+
 		return hexademal;
 	}
 
-	/**
-	 * @bug Не обработаны ошибки во входной строке
-	 * @todo	1. Учесть переполнение unsigned int
-	 *       2. Учесть не 16-ные символы во входной строке
-	 */
 	unsigned int hex2dec(const std::string & hexademal) {
 		unsigned int decimal = 0;
+		int maxsize = sizeof(decimal) * 2;
+		int cnt = 0;
 		for(const char ch : hexademal) {
-			decimal = decimal * 16 + (std::isdigit(ch) ? (ch-'0') : (std::toupper(ch)-'A'+10));
+			unsigned int tmp = 0;
+			if (std::isdigit(ch)) {
+				tmp = ch - '0';
+			} else if (std::isalpha(ch)) {
+				tmp = std::toupper(ch) - 'A' + 10;
+				if (tmp > 15) {
+					tmp = 0;
+					break;
+				}
+			} else {
+				break;
+			}
+			decimal = decimal * 16 + tmp;
+			++cnt;
+			if (cnt >= maxsize) {
+				break;
+			}
 		}
 		return decimal;
 	}
