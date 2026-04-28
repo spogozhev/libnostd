@@ -26,6 +26,18 @@ namespace math {
      */
 	double fast_power(double base, unsigned long long exp);
 
+    /**
+     * @brief       Вычисление корня из вещественного числа по формуле Герона
+     * @details     Метод эквивалентен использованию метода Ньютона для решения
+	 *				уравнения \f$ x^2 - S = 0 \f$.
+	 * 				Алгоритм можно представить следующим образом:
+	 *				\f$ x_{0}\approx {\sqrt {S}}, \f$
+	 *			    \f$ x_{n+1}={\frac {1}{2}}\left(x_{n}+{\frac {S}{x_{n}}}\right), \f$
+	 *				\f$ {\sqrt {S}}=\lim _{n\to \infty }x_{n}. \f$
+     * @param[in]   num Положительное вещественное число.
+     * @return      Квадратный корень из числа
+     */
+	double sqrt_heron(double num);
 }
 
 #endif
