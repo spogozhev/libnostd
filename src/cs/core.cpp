@@ -51,4 +51,14 @@ namespace cs {
 		return decimal;
 	}
 
+	std::string dec2bin(unsigned int decimal){
+		std::string binary;
+		binary.reserve(sizeof(decimal) * 8);
+		do {
+			binary += std::to_string(decimal % 2);
+			decimal >>= 1;
+		} while (decimal != 0);
+		std::reverse(binary.begin(), binary.end());
+		return binary;
+	}
 }
