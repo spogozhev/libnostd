@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
 
 #include "libnostd/math/core.hpp"
+#include "libnostd/math/statistics.hpp"
 
 TEST(MATH, square) {
 	EXPECT_DOUBLE_EQ(math::square(2), 4);
@@ -28,4 +29,8 @@ TEST(MATH, sqrt_heron) {
 		double s = sqrt_heron(tmp);
 		EXPECT_NEAR(s * s, tmp, tol);
 	}
+}
+
+TEST(MATH_STATISTICS, binomial) {
+	EXPECT_EQ( math::statistics::binomial(3, 2, 1001), 3);
 }
