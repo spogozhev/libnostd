@@ -31,6 +31,30 @@ TEST(MATH, sqrt_heron) {
 	}
 }
 
+TEST(MATH, factorial) {
+    using math::factorial;
+    EXPECT_EQ(factorial(6, 1001), 720);
+    EXPECT_EQ(factorial(6, 100), 20);
+    EXPECT_EQ(factorial(1, 10), 1);
+    EXPECT_EQ(factorial(0, 10), 1);
+}
+
+TEST(MATH, prod) {
+    using math::prod;
+    EXPECT_EQ(prod(1, 6, 1001), 720);
+    EXPECT_EQ(prod(5, 6, 1001), 30);
+    EXPECT_EQ(prod(6, 6, 1001), 6);
+    EXPECT_EQ(prod(0, 10, 1001), 0);
+    unsigned long long mod = 1'000'000'007;
+    EXPECT_EQ(prod(8, 13, mod), 1'235'520);
+}
+
 TEST(MATH_STATISTICS, binomial) {
-	EXPECT_EQ( math::statistics::binomial(3, 2, 1001), 3);
+	unsigned long mod = 1'000'000'007;
+	EXPECT_EQ( math::statistics::binomial(3, 2, mod), 3);
+    using math::statistics::binomial;
+    EXPECT_EQ(binomial(3, 0, mod), 1);
+    EXPECT_EQ(binomial(10, 1, mod), 10);
+    EXPECT_EQ(binomial(10, 10, mod), 1);
+    EXPECT_EQ(binomial(10, 11, mod), 0);
 }
