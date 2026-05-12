@@ -58,3 +58,16 @@ TEST(MATH_STATISTICS, binomial) {
     EXPECT_EQ(binomial(10, 10, mod), 1);
     EXPECT_EQ(binomial(10, 11, mod), 0);
 }
+
+TEST(MATH, binpowmod) {
+	using math::binpowmod;
+    unsigned long mod = 1'000'000'007;
+	EXPECT_EQ(binpowmod(2, 3, mod), 8);
+    EXPECT_EQ(binpowmod(2, 3, 7), 1);
+    EXPECT_EQ(binpowmod(10, 6, mod), 1'000'000);
+    EXPECT_EQ(binpowmod(1, 1000, mod), 1);
+    EXPECT_EQ(binpowmod(1000, 1, mod), 1000);
+    EXPECT_EQ(binpowmod(2, 0, mod), 1);
+    EXPECT_EQ(binpowmod(0, 3, mod), 0);
+    EXPECT_EQ(binpowmod(0, 0, mod), 1);
+}
