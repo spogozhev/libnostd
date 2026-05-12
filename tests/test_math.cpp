@@ -49,16 +49,6 @@ TEST(MATH, prod) {
     EXPECT_EQ(prod(8, 13, mod), 1'235'520);
 }
 
-TEST(MATH_STATISTICS, binomial) {
-	unsigned long mod = 1'000'000'007;
-	EXPECT_EQ( math::statistics::binomial(3, 2, mod), 3);
-    using math::statistics::binomial;
-    EXPECT_EQ(binomial(3, 0, mod), 1);
-    EXPECT_EQ(binomial(10, 1, mod), 10);
-    EXPECT_EQ(binomial(10, 10, mod), 1);
-    EXPECT_EQ(binomial(10, 11, mod), 0);
-}
-
 TEST(MATH, binpowmod) {
 	using math::binpowmod;
     unsigned long mod = 1'000'000'007;
@@ -100,3 +90,68 @@ TEST(MATH, gcdex) {
 	EXPECT_EQ( gcdex(100, 0, x, y), 100);
 }
 
+
+TEST(MATH_STATISTICS, binomial) {
+    unsigned long mod = 1'000'000'007;
+    EXPECT_EQ( math::statistics::binomial(3, 2, mod), 3);
+    using math::statistics::binomial;
+    EXPECT_EQ(binomial(3, 0, mod), 1);
+    EXPECT_EQ(binomial(10, 1, mod), 10);
+    EXPECT_EQ(binomial(10, 10, mod), 1);
+    EXPECT_EQ(binomial(10, 11, mod), 0);
+}
+
+TEST(MATH_STATISTICS, mean) {
+	using math::statistics::mean;
+	{
+		double M[] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+		int n = sizeof(M) / sizeof(M[0]);
+		EXPECT_DOUBLE_EQ( mean(M, n), 1);
+	}
+    {
+        double M[] = {10};
+        int n = sizeof(M) / sizeof(M[0]);
+        EXPECT_DOUBLE_EQ( mean(M, n), 10);
+    }
+
+    {
+        double M[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        int n = sizeof(M) / sizeof(M[0]);
+        EXPECT_DOUBLE_EQ( mean(M, n), 5);
+    }
+
+    {
+        double M[] = {-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5};
+        int n = sizeof(M) / sizeof(M[0]);
+        EXPECT_DOUBLE_EQ( mean(M, n), 0);
+    }
+
+}
+
+TEST(MATH_STATISTICS, var) {
+    using math::statistics::var;
+    {
+        double M[] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+        int n = sizeof(M) / sizeof(M[0]);
+        EXPECT_DOUBLE_EQ( var(M, n), 0);
+    }
+
+    {
+        double M[] = {1, -1, 1, -1, 1, -1, 1, -1, 1, -1};
+        int n = sizeof(M) / sizeof(M[0]);
+        EXPECT_DOUBLE_EQ( var(M, n), 1.0);
+    }
+
+    {
+        double M[] = {-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5};
+        int n = sizeof(M) / sizeof(M[0]);
+        EXPECT_DOUBLE_EQ( var(M, n), 10.0);
+    }
+
+    {
+        double M[] = {5};
+        int n = sizeof(M) / sizeof(M[0]);
+        EXPECT_DOUBLE_EQ( var(M, n), 0);
+    }
+
+}
