@@ -75,6 +75,7 @@ namespace math {
      * @brief     Обратный по модулю
      * @param[in] Положительное натуральное число.
      * @param[in] Положительное простое число. Модуль.
+	 * @warning   Числа должны быть взаимнопростые.
      * @return    обратный элемент по модулю
      */
     unsigned long invmod(unsigned long a, unsigned long m);
