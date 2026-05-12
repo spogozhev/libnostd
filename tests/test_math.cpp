@@ -71,3 +71,11 @@ TEST(MATH, binpowmod) {
     EXPECT_EQ(binpowmod(0, 3, mod), 0);
     EXPECT_EQ(binpowmod(0, 0, mod), 1);
 }
+
+TEST(MATH, invmod) {
+    using math::invmod;
+    unsigned long mod = 13;
+	for(unsigned long a = 1; a < mod; ++a){
+		EXPECT_EQ((invmod(a, mod) * a) % mod, 1);
+	}
+}
