@@ -25,3 +25,9 @@ target_link_libraries(
     ex02
     libnostd
 )
+
+add_executable(ex03 example-03.cpp)
+target_link_libraries(
+    ex03
+    libnostd
+)
