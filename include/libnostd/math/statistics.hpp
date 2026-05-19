@@ -4,10 +4,6 @@
  * @author svpogozhev
  */
 
-/**
- * @todo Добавить тесты для statistics
- */
-
 namespace math {
 namespace statistics {
 	/**

@@ -3,7 +3,6 @@
 
 /**
  * @brief Basic mathematical utils
- * @todo  Сделать полное покрытие тестами функций из math/core.hpp
  */
 namespace math {
 	/**
