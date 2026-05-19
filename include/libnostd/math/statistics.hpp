@@ -22,7 +22,7 @@ namespace statistics {
 
     /**
      * @brief     Выборочное среднее
-     * @details   \f$ \frac{1}{n} \sum_{i=1}^{n} x_i
+     * @details   \f$ \frac{1}{n} \sum_{i=1}^{n} x_i \f$
      * @param[in] Масcив вещественных чисел
      * @param[in] Размер массива
      * @return    Выборочное среднее
@@ -31,7 +31,7 @@ namespace statistics {
 
     /**
      * @brief     Выборочная дисперсия
-     * @details   \f$ \frac{1}{n} \sum_{i=1}^{n} (x_i-\overline{x})^2
+     * @details   \f$ \frac{1}{n} \sum_{i=1}^{n} (x_i-\overline{x})^2 \f$
      * @param[in] Масcив вещественных чисел
      * @param[in] Размер массива
      * @return    Выборочная дисперсия
